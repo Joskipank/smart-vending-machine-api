@@ -1,7 +1,8 @@
 import { Request, Response } from "express";
 import { MachineService } from "../service/MachineService";
-import {MachineResponse} from "../dto/responce/MachineResponse";
-import {MachineStatusResponse} from "../dto/responce/MachineStatusResponse";
+import {MachineResponse} from "../dto/response/MachineResponse";
+import {MachineStatusResponse} from "../dto/response/MachineStatusResponse";
+import {ProductBoughtResponse} from "../dto/response/ProductBoughtResponse";
 
 export class MachineController {
 
@@ -21,12 +22,10 @@ export class MachineController {
         });
     }
 
-    buy(req: Request, res: Response): void {
-        this.machineService.buy(req.body);
+    select(req: Request, res: Response): void {
+        const selectProduct : ProductBoughtResponse = this.machineService.select(req.body);
 
-        res.status(200).json({
-            message:  "Product purchased successfully",
-        });
+        res.status(200).json(selectProduct);
     }
 
     insert(req: Request, res: Response): void {

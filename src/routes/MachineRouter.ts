@@ -1,5 +1,8 @@
 import { Router } from "express";
-import { MachineController } from "../contoller/MachineController";
+import { MachineController } from "../controller/MachineController";
+import {validateInsert} from "../validation/insertValidator";
+import {restockValidator} from "../validation/restockValidator";
+import {selectValidator} from "../validation/selectValidator";
 
 const router = Router();
 
@@ -12,16 +15,19 @@ router.get(
 
 router.post(
     "/machine/restock",
+    restockValidator,
     machineController.restock.bind(machineController)
 )
 
 router.post(
-    "/machine/buy",
-    machineController.buy.bind(machineController)
+    "/machine/select",
+    selectValidator,
+    machineController.select.bind(machineController)
 )
 
 router.post(
     "/machine/insert",
+    validateInsert,
     machineController.insert.bind(machineController)
 )
 router.post(
