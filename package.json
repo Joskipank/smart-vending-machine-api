@@ -1,14 +1,25 @@
+
 {
-  "name": "untitled1",
+  "name": "smart-vending-machine",
   "version": "1.0.0",
-  "description": "",
+  "description": "REST API for smart vending machine",
   "main": "dist/index.js",
+
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "dev": "tsx src/server.ts"
   },
-  "dependencies": {},
+
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+
   "devDependencies": {
-    "typescript": "^5.5.3"
+    "@types/express": "^5.0.1",
+    "typescript": "^5.5.3",
+    "tsx": "^4.19.0"
   },
+
   "private": true
 }
